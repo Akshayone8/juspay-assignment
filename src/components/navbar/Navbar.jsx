@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import NavbarStyles from "./NavbarStyled";
 import { Tooltip } from "react-tooltip"; // Import Tooltip instead of ReactTooltip
 import FavIcon from "./Images/fav.svg";
@@ -14,19 +14,19 @@ import RecentIconDark from "./Images/activity-dark.svg";
 import NotificationIconDark from "./Images/notification-dark.svg";
 import SearchIconImgDark from "./Images/search-dark.svg";
 import BreadCrumbs from "../breadCrumbs/BreadCrumbs";
+import { AppContext } from "../../context/AppContext";
 
-function Navbar({
-  leftPanelView,
-  setLeftPanelView,
-  rightPanelView,
-  setRightPanelView,
-  isMobile,
-  isDarkMode,
-  setIsDarkMode,
-  isOrderList,
-  setIsOrderList,
-}) {
+function Navbar() {
   const searchRef = useRef(null);
+  const {
+    leftPanelView,
+    setLeftPanelView,
+    rightPanelView,
+    setRightPanelView,
+    isMobile,
+    isDarkMode,
+    setIsDarkMode,
+  } = useContext(AppContext);
 
   const handleLeftPanelToggle = () => {
     if (isMobile) {

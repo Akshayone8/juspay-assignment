@@ -15,7 +15,7 @@ import {
   ContactName,
   Icons,
 } from "./RightPanelStyled";
-import { forwardRef } from "react";
+import { useContext } from "react";
 import BugIcon from "./Images/bug.svg";
 import UserIcon from "./Images/User.svg";
 import Broadcast from "./Images/Broadcast.svg";
@@ -23,10 +23,17 @@ import Person1 from "./Images/person1.svg";
 import Person2 from "./Images/person2.svg";
 import Person3 from "./Images/person3.svg";
 import Person4 from "./Images/person4.svg";
+import { AppContext } from "../../context/AppContext";
 
-const RightPanel = forwardRef(({ rightPanelView, isDarkMode }, ref) => {
+const RightPanel = () => {
+  const { rightPanelView, isDarkMode, rightSidebarRef } =
+    useContext(AppContext);
   return (
-    <Aside rightPanelView={rightPanelView} ref={ref} isDarkMode={isDarkMode}>
+    <Aside
+      rightPanelView={rightPanelView}
+      ref={rightSidebarRef}
+      isDarkMode={isDarkMode}
+    >
       <Section>
         <SectionTitle isDarkMode={isDarkMode}>Notifications</SectionTitle>
         <Notification>
@@ -151,6 +158,6 @@ const RightPanel = forwardRef(({ rightPanelView, isDarkMode }, ref) => {
       </Section>
     </Aside>
   );
-});
+};
 
 export default RightPanel;

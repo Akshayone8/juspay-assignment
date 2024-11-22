@@ -1,4 +1,4 @@
-import React, { forwardRef } from "react";
+import React, { useContext } from "react";
 import LeftPanelStyles from "./LeftPanleStyled";
 import ProfileImage from "./Images/profile-image.svg";
 import DefaultIcon from "./Images/default-icon.svg";
@@ -22,8 +22,15 @@ import CorporateIconDark from "./Images/corporate-dark.svg";
 import SocialIconDark from "./Images/social-dark.svg";
 import DropArrowDark from "./Images/arrow-dark.svg";
 import { Link, useLocation } from "react-router-dom";
+import { AppContext } from "../../context/AppContext";
 
-const LeftPanel = forwardRef(({ leftPanelView, isDarkMode }, ref) => {
+const LeftPanel = () => {
+  const {
+    leftPanelView,
+    isDarkMode,
+    sidebarRef, // Accessing the ref from AppContext
+  } = useContext(AppContext);
+
   const location = useLocation();
 
   // Check if the route matches the current path
@@ -32,7 +39,7 @@ const LeftPanel = forwardRef(({ leftPanelView, isDarkMode }, ref) => {
   return (
     <LeftPanelStyles.Aside
       leftPanelView={leftPanelView}
-      ref={ref}
+      ref={sidebarRef}
       isDarkMode={isDarkMode}
     >
       {/* Logo and Profile Section */}
@@ -199,6 +206,6 @@ const LeftPanel = forwardRef(({ leftPanelView, isDarkMode }, ref) => {
       </LeftPanelStyles.NavSection>
     </LeftPanelStyles.Aside>
   );
-});
+};
 
 export default LeftPanel;

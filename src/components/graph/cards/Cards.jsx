@@ -27,7 +27,7 @@ const Cards = ({ isDarkMode }) => {
             >
               {card.subCount}
               <ProgressIcon
-                src={isDarkMode && card.isDarkMode ? card.darkIcon : card.icon} //darkicon:white color
+                src={isDarkMode && card.isDarkMode ? card.darkIcon : card.icon}
                 alt={card.type}
               />
             </CardSubCount>

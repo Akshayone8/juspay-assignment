@@ -1,3 +1,4 @@
+import { useContext } from "react";
 import ProjectionsVsActualsChart from "../graph/BarChart";
 import Cards from "../graph/cards/Cards";
 import SalesDonutChart from "../graph/DonutChart";
@@ -11,10 +12,10 @@ import {
   ProjectionCard,
   RevenueGraphCard,
 } from "./DefaultStyled";
-import { useOutletContext } from "react-router-dom";
+import { AppContext } from "../../context/AppContext";
 
 const Default = () => {
-  const { isDarkMode } = useOutletContext();
+  const { isDarkMode } = useContext(AppContext);
   return (
     <DataContainer isDarkMode={isDarkMode}>
       <DataTitle isDarkMode={isDarkMode}>eCommerce</DataTitle>

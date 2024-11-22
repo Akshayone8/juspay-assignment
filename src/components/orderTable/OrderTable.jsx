@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useContext } from "react";
 import {
   Box,
   Table,
@@ -25,8 +25,9 @@ import Person2 from "../rightPanel/Images/person2.svg";
 import Person3 from "../rightPanel/Images/person3.svg";
 import Person4 from "../rightPanel/Images/person4.svg";
 import { DataContainer } from "../default/DefaultStyled";
-import { useOutletContext } from "react-router-dom";
+
 import { initialData, columns } from "./data";
+import { AppContext } from "../../context/AppContext";
 
 const OrdersTable = () => {
   const [data, setData] = useState(initialData);
@@ -42,7 +43,7 @@ const OrdersTable = () => {
     status: "",
   });
   const [menuAnchor, setMenuAnchor] = useState(null);
-  const { isDarkMode } = useOutletContext();
+  const { isDarkMode } = useContext(AppContext);
 
   const filteredData = useMemo(() => {
     return data.filter(
